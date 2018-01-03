@@ -21,7 +21,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category" />
             </intent-filter>
         </activity>
         <activity
@@ -43,9 +43,17 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".SettingsActivity"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".main.MainActivity"/>
+        <activity
+            android:name=".SettingsActivity"
+            android:parentActivityName=".main.MainActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".SplashActivity" android:theme="@style/SplashStyle">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

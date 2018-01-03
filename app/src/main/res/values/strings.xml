@@ -31,4 +31,6 @@
     <string name="no">No</string>
     <string name="deleteWarning">Are you sure you want to delete this contact?</string>
 
+    <string name="splash_text"> - By The Jboss Community</string>
+
 </resources>

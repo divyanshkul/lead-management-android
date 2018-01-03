@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.community.jboss.leadmanagement.SplashActivity"
-    android:background="#15AEFC">
-    <!--android:background="#00abc2     ">-->
+    android:background="@color/splash_background">
 
     <ImageView
         android:id="@+id/launcher_logo"
@@ -57,7 +56,3 @@
         app:layout_constraintTop_toBottomOf="@+id/launcher_logo" />
 
 </android.support.constraint.ConstraintLayout>
-
-
-
-

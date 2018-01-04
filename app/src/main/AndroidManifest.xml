@@ -4,6 +4,7 @@
     package="com.community.jboss.leadmanagement">
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:name=".LeadApp"
@@ -47,6 +48,7 @@
             android:name=".SettingsActivity"
             android:parentActivityName=".main.MainActivity"
             android:theme="@style/AppTheme" />
+
         <activity android:name=".SplashActivity" android:theme="@style/SplashStyle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,6 +56,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".main.contacts.importcontact.ImportContactActivity"
+            android:parentActivityName=".main.MainActivity"/>
+
     </application>
 
 </manifest>

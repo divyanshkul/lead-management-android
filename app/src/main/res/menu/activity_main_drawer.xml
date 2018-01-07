@@ -21,5 +21,15 @@
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings_black_24dp"
             android:title="@string/action_settings"/>
+        <item
+            android:id="@+id/nav_sign_in"
+            android:icon="@drawable/ic_signin"
+            android:title="@string/signIn"/>
+        <item
+            android:id="@+id/nav_sign_out"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/signOut"
+            android:visible="false"/>
+
     </group>
 </menu>

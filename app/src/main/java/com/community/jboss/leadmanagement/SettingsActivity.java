@@ -60,6 +60,7 @@ public class SettingsActivity extends FragmentActivity {
         });
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_AUTO) {
             enableAuto.setChecked(true);
+            themeToggle.setChecked(false);
         } else {
             enableAuto.setChecked(false);
         }

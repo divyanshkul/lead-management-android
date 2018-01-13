@@ -67,7 +67,7 @@ public class EditContactActivity extends AppCompatActivity {
 
 
         if(useDarkTheme) {
-            setTheme(R.style.AppTheme_Dark_Random);
+            setTheme(R.style.AppTheme_Dark_Main);
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_contact);

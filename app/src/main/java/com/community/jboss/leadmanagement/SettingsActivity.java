@@ -22,10 +22,6 @@ public class SettingsActivity extends FragmentActivity {
 
     private static final String DarkUI_Pref = "prefs";
     private static final String DarkTheme_Pref = "dark_theme";
-    public static final String TAG = "App";
-    private boolean isAutoNightModeEnabled = false;
-//    private static final String CheckBox_Pref = "checked";
-//    private static final String DarkTheme_Pref = "dark_theme";
 
     @BindView(R.id.settings_bar)
     Toolbar toolbar;
@@ -62,7 +58,7 @@ public class SettingsActivity extends FragmentActivity {
                 finish();
             }
         });
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_AUTO) {
             enableAuto.setChecked(true);
         } else {
             enableAuto.setChecked(false);
@@ -75,7 +71,7 @@ public class SettingsActivity extends FragmentActivity {
                 if (isEnabled) {
                     themeToggle.setEnabled(false);
                     themeToggle.setChecked(false);
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
                     Toast.makeText(getApplicationContext(), getString(R.string.autoEnabled), Toast.LENGTH_SHORT).show();
                     startActivity(intent);
 
@@ -114,11 +110,4 @@ public class SettingsActivity extends FragmentActivity {
         super.onPause();
     }
 
-    public boolean isAutoNightModeEnabled() {
-        return isAutoNightModeEnabled;
-    }
-
-    public void setIsAutoNughModeEnabled(boolean isAutoNightModeEnabled) {
-        this.isAutoNightModeEnabled = isAutoNightModeEnabled;
-    }
 }

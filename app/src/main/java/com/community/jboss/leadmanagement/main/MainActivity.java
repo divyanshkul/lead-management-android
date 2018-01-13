@@ -4,6 +4,7 @@ package com.community.jboss.leadmanagement.main;
 import android.Manifest;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
@@ -17,6 +18,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 import com.community.jboss.leadmanagement.PermissionManager;
 import com.community.jboss.leadmanagement.R;
@@ -32,6 +35,8 @@ import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private static final String PREFS_NAME = "prefs";
+    private static final String PREF_DARK_THEME = "dark_theme";
 
     private final int ID = 512;
     @BindView(R.id.toolbar)
@@ -48,8 +53,20 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        boolean useDarkTheme = preferences.getBoolean(PREF_DARK_THEME, false);
+
+
+        if(useDarkTheme) {
+            setTheme(R.style.AppTheme_Dark_Main);
+        }
+        else{
+            setTheme(R.style.AppTheme_NoActionBar);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         mViewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
 
@@ -176,5 +193,16 @@ public class MainActivity extends AppCompatActivity
             fab.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), EditContactActivity.class)));
             fab.setImageResource(R.drawable.ic_add_white_24dp);
         }
+    }
+    private void toggleTheme(boolean darkTheme) {
+        SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putBoolean(PREF_DARK_THEME, darkTheme);
+        editor.apply();
+        Intent intent = new Intent(this, MainActivity.class);
+//        Intent intent = getIntent();
+        startActivity(intent);
+        finish();
+
+
     }
 }

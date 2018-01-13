@@ -37,5 +37,9 @@
     <string name="email">Email</string>
     <string name="mobile">Mobile</string>
 
+    <string name="toggleMode">Switch to Night Mode Manually</string>
+    <string name="modeChanged">Night Mode enabled</string>
+    <string name="autoEnabled">Auto Night Mode enabled</string>
+    <string name="textEnableAuto">Switch to Night Mode Automatically</string>
 
 </resources>

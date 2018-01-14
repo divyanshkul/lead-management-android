@@ -25,17 +25,13 @@ public class SettingsActivity extends FragmentActivity {
 
     @BindView(R.id.settings_bar)
     Toolbar toolbar;
-    @BindView(R.id.nightSwitch)
-    Switch themeToggle;
-    @BindView(R.id.enableAutoMode)
-    CheckBox enableAuto;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SharedPreferences preferences = getSharedPreferences(DarkUI_Pref, MODE_PRIVATE);
-        boolean useDarkTheme = preferences.getBoolean(DarkTheme_Pref, false);
-
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean useDarkTheme = preferences.getBoolean("nightSwitch", false);
         if (useDarkTheme) {
             setTheme(R.style.AppTheme_Dark);
         }
@@ -43,11 +39,6 @@ public class SettingsActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        if (savedInstanceState != null) {
-            // During initial setup, plug in the details fragment.
-            SettingsFragment details = new SettingsFragment();
-            getSupportFragmentManager().beginTransaction().add(R.id.settings_fragment_id, details).commit();
-        }
 
         ButterKnife.bind(this);
         toolbar.setTitle("Settings");
@@ -58,57 +49,11 @@ public class SettingsActivity extends FragmentActivity {
                 finish();
             }
         });
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_AUTO) {
-            enableAuto.setChecked(true);
-            themeToggle.setChecked(false);
-        } else {
-            enableAuto.setChecked(false);
-        }
 
-        Intent intent = new Intent(this, MainActivity.class);
-        enableAuto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isEnabled) {
-                if (isEnabled) {
-                    themeToggle.setEnabled(false);
-                    themeToggle.setChecked(false);
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
-                    Toast.makeText(getApplicationContext(), getString(R.string.autoEnabled), Toast.LENGTH_SHORT).show();
-                    startActivity(intent);
 
-                } else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    themeToggle.setEnabled(true);
-
-                }
-            }
-        });
-
-        themeToggle.setChecked(useDarkTheme);
-        themeToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton view, boolean isChecked) {
-                toggleTheme(isChecked);
-            }
-        });
 
 
     }
 
-    private void toggleTheme(boolean darkTheme) {
-        Toast.makeText(getApplicationContext(), getString(R.string.modeChanged), Toast.LENGTH_SHORT).show();
-        SharedPreferences.Editor editor = getSharedPreferences(DarkUI_Pref, MODE_PRIVATE).edit();
-        editor.putBoolean(DarkTheme_Pref, darkTheme);
-        editor.apply();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    @Override
-    protected void onPause() {
-        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
-        super.onPause();
-    }
 
 }

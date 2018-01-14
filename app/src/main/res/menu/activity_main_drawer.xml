@@ -8,11 +8,15 @@
         <item
             android:id="@+id/nav_contacts"
             android:icon="@drawable/ic_menu_contacts"
-            android:title="@string/title_contacts" />
+            android:title="@string/title_contacts"
+            android:state_pressed="true"
+            android:color="#ffffff"/>
         <item
             android:id="@+id/nav_groups"
             android:icon="@drawable/ic_menu_group"
-            android:title="@string/title_groups" />
+            android:title="@string/title_groups"
+            android:state_pressed="true"
+            android:color="#ffffff"/>
     </group>
 
     <group android:checkableBehavior="none"
@@ -20,6 +24,8 @@
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings_black_24dp"
-            android:title="@string/action_settings"/>
+            android:title="@string/action_settings"
+            android:state_pressed="true"
+            android:color="#ffffff"/>
     </group>
 </menu>

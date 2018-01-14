@@ -9,6 +9,14 @@
             android:summary="current location"
             android:dialogMessage="change server location using this entry box."
             android:defaultValue="Default value"/>
+        <CheckBoxPreference
+            android:key="enableAutoMode"
+            android:title="@string/textEnableAuto"
+            android:defaultValue="false"/>
+        <SwitchPreference
+            android:key="nightSwitch"
+            android:title="@string/toggleMode"
+            android:defaultValue="false"/>
     </android.support.v7.preference.PreferenceCategory>
 
 </android.support.v7.preference.PreferenceScreen>
